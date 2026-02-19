@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pharmacodynamics Part 1 (MCQs) Quiz</title>
+    <style>
+        :root {
+            --bg-color: #f5f7fa;
+            --container-bg: white;
+            --text-color: #333;
+            --border-color: #ddd;
+            --primary-color: #3498db;
+            --header-color: #2c3e50;
+            --secondary-text: #7f8c8d;
+            --progress-bg: #ecf0f1;
+            --question-bg: #f8f9fa;
+            --option-bg: #fff;
+            --option-hover: #f1f8ff;
+            --option-selected: #d1ecf1;
+            --correct-bg: #d4edda;
+            --correct-border: #28a745;
+            --incorrect-bg: #f8d7da;
+            --incorrect-border: #dc3545;
+            --button-bg: #3498db;
+            --button-hover: #2980b9;
+            --button-disabled: #bdc3c7;
+            --restart-bg: #2ecc71;
+            --restart-hover: #27ae60;
+            --review-bg: #f39c12;
+            --review-hover: #e67e22;
+            --toggle-bg: #ecf0f1;
+            --toggle-slider: white;
+            --toggle-text: #7f8c8d;
+        }
+
+        .dark-mode {
+            --bg-color: #1a1a2e;
+            --container-bg: #16213e;
+            --text-color: #e6e6e6;
+            --border-color: #394867;
+            --primary-color: #4cc9f0;
+            --header-color: #e6e6e6;
+            --secondary-text: #a9a9a9;
+            --progress-bg: #394867;
+            --question-bg: #1f4068;
+            --option-bg: #16213e;
+            --option-hover: #1f4068;
+            --option-selected: #1f4068;
+            --correct-bg: #2d5a2d;
+            --correct-border: #4caf50;
+            --incorrect-bg: #5a2d2d;
+            --incorrect-border: #f44336;
+            --button-bg: #4cc9f0;
+            --button-hover: #3aa8d0;
+            --button-disabled: #5d6d7e;
+            --restart-bg: #2ecc71;
+            --restart-hover: #27ae60;
+            --review-bg: #f39c12;
+            --review-hover: #e67e22;
+            --toggle-bg: #394867;
+            --toggle-slider: #4cc9f0;
+            --toggle-text: #e6e6e6;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--container-bg);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--primary-color);
+            position: relative;
+        }
+        h1 {
+            color: var(--header-color);
+            margin-bottom: 5px;
+            font-size: 24px;
+            transition: color 0.3s;
+        }
+        .author {
+            color: var(--secondary-text);
+            font-style: italic;
+            margin-bottom: 10px;
+            transition: color 0.3s;
+        }
+        .description {
+            color: var(--secondary-text);
+            margin-bottom: 20px;
+            transition: color 0.3s;
+        }
+        .theme-toggle {
+            position: absolute;
+            top: 35px;
+            right: 0;
+            display: flex;
+            align-items: center;
+        }
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 120px;
+            height: 34px;
+        }
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--toggle-bg);
+            transition: .4s;
+            border-radius: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 10px;
+            font-size: 12px;
+            font-weight: bold;
+            color: var(--toggle-text);
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 60px;
+            left: 4px;
+            bottom: 4px;
+            background-color: var(--toggle-slider);
+            transition: .4s;
+            border-radius: 34px;
+            z-index: 1;
+        }
+        .slider-text {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+        .light-text, .dark-text {
+            transition: opacity 0.3s;
+        }
+        .dark-mode .light-text {
+            opacity: 0.5;
+        }
+        .light-text {
+            opacity: 0.5;
+        }
+        .dark-mode .dark-text {
+            opacity: 1;
+        }
+        .dark-text {
+            opacity: 0.5;
+        }
+        input:checked + .slider:before {
+            transform: translateX(52px);
+        }
+        .progress-container {
+            background: var(--progress-bg);
+            border-radius: 5px;
+            margin-bottom: 20px;
+            position: relative;
+            height: 10px;
+            transition: background-color 0.3s;
+        }
+        .progress-bar {
+            height: 100%;
+            background: var(--primary-color);
+            border-radius: 5px;
+            width: 0%;
+            transition: width 0.3s ease, background-color 0.3s;
+        }
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: var(--header-color);
+            transition: color 0.3s;
+        }
+        .question {
+            background: var(--question-bg);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: background-color 0.3s;
+        }
+        .question-number {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            transition: color 0.3s;
+        }
+        .question-text {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+        .options {
+            display: grid;
+            grid-gap: 10px;
+        }
+        .option {
+            padding: 12px 15px;
+            background: var(--option-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .option:hover {
+            background: var(--option-hover);
+            border-color: var(--primary-color);
+        }
+        .option.selected {
+            background: var(--option-selected);
+            border-color: var(--primary-color);
+        }
+        .option.correct {
+            background: var(--correct-bg);
+            border-color: var(--correct-border);
+        }
+        .option.incorrect {
+            background: var(--incorrect-bg);
+            border-color: var(--incorrect-border);
+        }
+        .feedback {
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+            display: none;
+        }
+        .feedback.correct {
+            background: var(--correct-bg);
+            color: var(--text-color);
+            border: 1px solid var(--correct-border);
+            display: block;
+        }
+        .feedback.incorrect {
+            background: var(--incorrect-bg);
+            color: var(--text-color);
+            border: 1px solid var(--incorrect-border);
+            display: block;
+        }
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        button {
+            padding: 10px 20px;
+            background: var(--button-bg);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: var(--button-hover);
+        }
+        button:disabled {
+            background: var(--button-disabled);
+            cursor: not-allowed;
+        }
+        .results {
+            text-align: center;
+            padding: 30px;
+            display: none;
+        }
+        .score {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--header-color);
+        }
+        .score-value {
+            font-size: 48px;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        .restart-btn {
+            margin-top: 20px;
+            background: var(--restart-bg);
+        }
+        .restart-btn:hover {
+            background: var(--restart-hover);
+        }
+        .review-btn {
+            margin-top: 20px;
+            background: var(--review-bg);
+        }
+        .review-btn:hover {
+            background: var(--review-hover);
+        }
+        .review-section {
+            margin-top: 30px;
+            padding: 20px;
+            background: var(--question-bg);
+            border-radius: 8px;
+            display: none;
+        }
+        .review-title {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--header-color);
+            text-align: center;
+        }
+        .review-question {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-left: 4px solid var(--incorrect-border);
+            background: var(--container-bg);
+            border-radius: 4px;
+        }
+        .review-question-number {
+            font-weight: bold;
+            color: var(--incorrect-border);
+            margin-bottom: 8px;
+        }
+        .review-question-text {
+            margin-bottom: 10px;
+        }
+        .review-answer {
+            margin-top: 8px;
+            font-weight: bold;
+        }
+        .review-correct {
+            color: var(--correct-border);
+        }
+        .review-explanation {
+            margin-top: 5px;
+            font-style: italic;
+            color: var(--secondary-text);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Pharmacodynamics Part 1 (MCQs)</h1>
+            <p class="author">Dr. Samy Salem</p>
+            <p class="description">Test your knowledge of Pharmacodynamics – receptor mechanisms, drug actions, and antagonists</p>
+            <div class="theme-toggle">
+                <label class="switch">
+                    <input type="checkbox" id="dark-mode-toggle">
+                    <span class="slider">
+                        <div class="slider-text">
+                            <span class="light-text">Light</span>
+                            <span class="dark-text">Dark</span>
+                        </div>
+                    </span>
+                </label>
+            </div>
+        </header>
+
+        <div class="progress-container">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+
+        <div class="stats">
+            <div>Question: <span id="current-question">1</span>/<span id="total-questions">35</span></div>
+            <div>Score: <span id="score">0</span>/<span id="total-score">35</span></div>
+        </div>
+
+        <div id="quiz-container">
+            <!-- questions injected by js -->
+        </div>
+
+        <div class="navigation">
+            <button id="prev-btn" disabled>Previous</button>
+            <button id="next-btn">Next</button>
+        </div>
+
+        <div id="results" class="results">
+            <div class="score">Your Score: <span class="score-value" id="final-score">0</span>/35</div>
+            <p id="performance-message"></p>
+            <button class="restart-btn" id="restart-btn">Restart Quiz</button>
+            <button class="review-btn" id="review-btn">Review Incorrect Answers</button>
+        </div>
+
+        <div id="review-section" class="review-section">
+            <h2 class="review-title">Questions Answered Incorrectly</h2>
+            <div id="incorrect-questions-list"></div>
+        </div>
+    </div>
+
+    <script>
+        // --------------------------------------------------------------
+        // Pharmacodynamics Part 1 (MCQs) – extracted from PDF
+        // total 35 questions (1 to 35 inclusive)
+        // --------------------------------------------------------------
+        const originalQuizData = [
+            { q: "Pharmacodynamics is best defined as:", opts: ["A) What the body does to the drug.", "B) The study of drug absorption, distribution, metabolism, and excretion.", "C) What the drug does to the body.", "D) The science of drug compounding and dispensing."], ans: 2, exp: "C) What the drug does to the body. (Page 2)" },
+            { q: "The study of pharmacodynamics includes all of the following EXCEPT:", opts: ["A) Therapeutic effects of a drug.", "B) Adverse effects of a drug.", "C) The mechanism of action of a drug.", "D) The concentration of a drug in the bloodstream over time."], ans: 3, exp: "D) The concentration of a drug in the bloodstream over time. (Page 3)" },
+            { q: "A receptor is best described as a:", opts: ["A) Any site where a drug produces an effect.", "B) Specific protein macromolecule that interacts with a ligand to produce an effect.", "C) Non-specific binding site for foreign chemicals.", "D) Lipid molecule in the cell membrane."], ans: 1, exp: "B) Specific protein macromolecule that interacts with a ligand to produce an effect. (Page 4)" },
+            { q: "Receptors are characterized by all of the following properties EXCEPT:", opts: ["A) High affinity for a drug molecule.", "B) Selectivity for a drug molecule.", "C) The ability to bind to any chemical substance.", "D) Specificity for a drug molecule."], ans: 2, exp: "C) The ability to bind to any chemical substance. (Page 5)" },
+            { q: "A ligand is defined as:", opts: ["A) The protein macromolecule that binds a drug.", "B) Any chemical substance that combines with a receptor.", "C) A drug that only produces an inhibitory effect.", "D) The second messenger activated by a drug."], ans: 1, exp: "B) Any chemical substance that combines with a receptor. (Page 8)" },
+            { q: "Which term describes the event of a drug combining with its receptor?", opts: ["A) Metabolism", "B) Excretion", "C) Binding", "D) Absorption"], ans: 2, exp: "C) Binding (Page 9)" },
+            { q: "Drugs can produce their pharmacological action through which two broad mechanisms?", opts: ["A) Central and peripheral mechanisms.", "B) Agonist and antagonist mechanisms.", "C) Receptor-mediated and non-receptor mediated mechanisms.", "D) Therapeutic and adverse effect mechanisms."], ans: 2, exp: "C) Receptor-mediated and non-receptor mediated mechanisms. (Page 10)" },
+            { q: "Monoamine oxidase inhibitors (MAOIs) produce their effect by which non-receptor mediated mechanism?", opts: ["A) Acting on enzymes", "B) Acting on storage vesicles", "C) Chemical action", "D) Acting on subcellular structures"], ans: 0, exp: "A) Acting on enzymes (Page 12)" },
+            { q: "The drug colchicine disrupts microtubules to inhibit mitosis. This is an example of a drug acting on:", opts: ["A) Enzymes", "B) Plasma membranes", "C) Subcellular structures", "D) Storage vesicles"], ans: 2, exp: "C) Subcellular structures (Page 13)" },
+            { q: "Reserpine produces its pharmacological effect by:", opts: ["A) Acting as an antacid.", "B) Inhibiting an enzyme.", "C) Increasing the permeability of fungal membranes.", "D) Inhibiting the reuptake of norepinephrine into storage vesicles."], ans: 3, exp: "D) Inhibiting the reuptake of norepinephrine into storage vesicles. (Page 14)" },
+            { q: "The mechanism of action of antacids, which neutralize stomach acid, is best described as:", opts: ["A) Physical action", "B) Chemical action", "C) Acting on enzymes", "D) Acting on plasma membranes"], ans: 1, exp: "B) Chemical action (Page 15)" },
+            { q: "Chelation is a process used in pharmacodynamics where:", opts: ["A) A drug lubricates the intestinal tract.", "B) A drug inhibits an enzyme.", "C) Organic compounds form complexes with metals.", "D) A drug binds to a receptor site."], ans: 2, exp: "C) Organic compounds form complexes with metals. (Page 15)" },
+            { q: "An example of a drug acting by physical action is:", opts: ["A) Protamine sulfate neutralizing heparin.", "B) Desferrioxamine chelating iron.", "C) Salicylates acting on mitochondria.", "D) Liquid paraffin acting as a lubricant in constipation."], ans: 3, exp: "D) Liquid paraffin acting as a lubricant in constipation. (Page 16)" },
+            { q: "The neutralization of heparin by its antidote protamine sulfate is an example of a drug acting by:", opts: ["A) Physical action", "B) Chemical action", "C) Acting on storage vesicles", "D) Acting on subcellular structures"], ans: 1, exp: "B) Chemical action (Page 15)" },
+            { q: "An agonist is a ligand that possesses:", opts: ["A) Affinity but no efficacy.", "B) Efficacy but no affinity.", "C) Both affinity and efficacy.", "D) Neither affinity nor efficacy."], ans: 2, exp: "C) Both affinity and efficacy. (Page 18)" },
+            { q: "An antagonist is a drug that binds to a receptor but:", opts: ["A) Activates it to produce a maximal effect.", "B) Does not activate it.", "C) Has no affinity for it.", "D) Chemically destroys it."], ans: 1, exp: "B) Does not activate it. (Page 19)" },
+            { q: "Atropine, which binds to muscarinic receptors and blocks the effect of acetylcholine, is classified as a(n):", opts: ["A) Agonist", "B) Antagonist", "C) Enzyme inhibitor", "D) Chemical agent"], ans: 1, exp: "B) Antagonist (Page 19)" },
+            { q: "A competitive antagonist is characterized by:", opts: ["A) Binding irreversibly to the receptor's active site.", "B) Binding to a site different from the agonist.", "C) Chemically inactivating the agonist in the bloodstream.", "D) Binding to the active site with a weak, reversible bond."], ans: 3, exp: "D) Binding to the active site with a weak, reversible bond. (Page 20)" },
+            { q: "A key feature of a competitive antagonist is that its effect can be overcome by:", opts: ["A) Administering a different agonist.", "B) Administering a different antagonist.", "C) Increasing the dose of the agonist.", "D) Increasing the dose of the antagonist."], ans: 2, exp: "C) Increasing the dose of the agonist. (Page 20)" },
+            { q: "Naloxone, which competes with opioids for their receptors, is a classic example of a(n):", opts: ["A) Non-competitive antagonist", "B) Competitive antagonist", "C) Physiological antagonist", "D) Chemical antagonist"], ans: 1, exp: "B) Competitive antagonist (Page 20)" },
+            { q: "A non-competitive antagonist binds to the receptor's active site with a:", opts: ["A) Strong, often covalent, irreversible bond.", "B) Weak, reversible bond.", "C) Ionic bond that is easily broken.", "D) Hydrogen bond that is temporary."], ans: 0, exp: "A) Strong, often covalent, irreversible bond. (Page 21)" },
+            { q: "Phenoxybenzamine's action on α-receptors is an example of a(n):", opts: ["A) Competitive antagonist", "B) Chemical antagonist", "C) Non-competitive antagonist", "D) Physiological antagonist"], ans: 2, exp: "C) Non-competitive antagonist (Page 21)" },
+            { q: "The antagonism between protamine sulphate and heparin, where they chemically interact away from the receptor, is classified as:", opts: ["A) Competitive antagonism", "B) Non-competitive antagonism", "C) Chemical antagonism", "D) Physiological antagonism"], ans: 2, exp: "C) Chemical antagonism (Page 22)" },
+            { q: "Physiological antagonism occurs when:", opts: ["A) Two drugs compete for the same receptor.", "B) One drug binds irreversibly to a receptor.", "C) Two drugs bind to each other and are inactivated.", "D) Two drugs act on different receptors to produce opposing effects."], ans: 3, exp: "D) Two drugs act on different receptors to produce opposing effects. (Page 23)" },
+            { q: "The bronchodilation caused by epinephrine (acting on B₂ receptors) opposing the bronchoconstriction caused by histamine (acting on H₁ receptors) is an example of:", opts: ["A) Physiological antagonism", "B) Chemical antagonism", "C) Competitive antagonism", "D) Non-competitive antagonism"], ans: 0, exp: "A) Physiological antagonism (Page 23)" },
+            { q: "For a receptor to function, it should possess two functional domains:", opts: ["A) An agonist-binding domain and an antagonist-binding domain.", "B) A ligand-binding domain and an effector domain.", "C) An intracellular domain and an extracellular domain.", "D) A stimulatory domain and an inhibitory domain."], ans: 1, exp: "B) A ligand-binding domain and an effector domain. (Page 24)" },
+            { q: "In a ligand-gated ion channel, what is the direct result of an agonist binding to the receptor?", opts: ["A) Activation of a G-protein.", "B) Activation of an intracellular enzyme like tyrosine kinase.", "C) Opening of the ion channel, altering membrane potential.", "D) Activation or inhibition of gene transcription."], ans: 2, exp: "C) Opening of the ion channel, altering membrane potential. (Page 27)" },
+            { q: "Nicotinic receptors, which are sodium ion channels, are a classic example of which receptor type?", opts: ["A) G-protein coupled receptors", "B) Intracellular receptors", "C) Receptors as enzymes", "D) Ligand-gated ion channels"], ans: 3, exp: "D) Ligand-gated ion channels (Page 27)" },
+            { q: "The insulin receptor is a primary example of which type of receptor mechanism?", opts: ["A) Ligand-gated ion channel", "B) G-protein coupled receptor", "C) Receptor as an enzyme (tyrosine kinase)", "D) Intracellular receptor"], ans: 2, exp: "C) Receptor as an enzyme (tyrosine kinase) (Page 29)" },
+            { q: "G-protein coupled receptors are also known as:", opts: ["A) Tyrosine kinase receptors", "B) Intracellular receptors", "C) Ion channel receptors", "D) 7-transmembrane receptors"], ans: 3, exp: "D) 7-transmembrane receptors (Page 31)" },
+            { q: "In the G-protein coupled receptor system, what is the role of the G-protein?", opts: ["A) To bind directly to the ligand.", "B) To act as the ion channel itself.", "C) To link the receptor to an effector system like adenylate cyclase.", "D) To enter the nucleus and alter gene transcription."], ans: 2, exp: "C) To link the receptor to an effector system like adenylate cyclase. (Page 31)" },
+            { q: "Stimulatory G proteins (Gs) cause which downstream event?", opts: ["A) Decreased cAMP levels.", "B) Activation of adenylate cyclase and increased cAMP.", "C) Direct opening of an ion channel.", "D) Inhibition of gene transcription."], ans: 1, exp: "B) Activation of adenylate cyclase and increased cAMP. (Page 31)" },
+            { q: "Which type of receptor is located intracellularly, and its activation leads to modification of protein production?", opts: ["A) Ligand-gated ion channels", "B) G-protein coupled receptors", "C) Tyrosine kinase receptors", "D) Intracellular receptors"], ans: 3, exp: "D) Intracellular receptors (Page 33)" },
+            { q: "Steroid hormones and thyroid hormones exert their effects by binding to which type of receptor?", opts: ["A) Ligand-gated ion channels", "B) G-protein coupled receptors", "C) Receptors as enzymes", "D) Intracellular receptors"], ans: 3, exp: "D) Intracellular receptors (Page 33)" },
+            { q: "When an agonist binds to an intracellular receptor, what is the final result at the cellular level?", opts: ["A) Activation or inhibition of transcription of nearby genes, modifying protein production.", "B) Rapid change in membrane potential.", "C) Activation of a second messenger like cAMP.", "D) Phosphorylation of intracellular proteins."], ans: 0, exp: "A) Activation or inhibition of transcription of nearby genes, modifying protein production. (Page 33)" }
+        ];
+
+        // shuffle options inside each question (preserves answer index)
+        function shuffleOptions(qObj) {
+            const indices = [0,1,2,3];
+            for (let i = indices.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [indices[i], indices[j]] = [indices[j], indices[i]];
+            }
+            const newOpts = indices.map(i => qObj.opts[i]);
+            const newAns = indices.indexOf(qObj.ans);
+            return {
+                question: qObj.q,
+                options: newOpts,
+                answer: newAns,
+                explanation: qObj.exp
+            };
+        }
+
+        // build full randomized quiz
+        let quizData = originalQuizData.map(q => shuffleOptions(q));
+
+        // state
+        let currentQuestion = 0;
+        let score = 0;
+        let userAnswers = new Array(quizData.length).fill(null);
+        let incorrectQuestions = [];
+
+        // DOM elements
+        const quizContainer = document.getElementById('quiz-container');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const progressBar = document.getElementById('progress-bar');
+        const currentQSpan = document.getElementById('current-question');
+        const totalQSpan = document.getElementById('total-questions');
+        const scoreSpan = document.getElementById('score');
+        const totalScoreSpan = document.getElementById('total-score');
+        const resultsDiv = document.getElementById('results');
+        const finalScoreSpan = document.getElementById('final-score');
+        const perfMsg = document.getElementById('performance-message');
+        const restartBtn = document.getElementById('restart-btn');
+        const reviewBtn = document.getElementById('review-btn');
+        const reviewSection = document.getElementById('review-section');
+        const incorrectList = document.getElementById('incorrect-questions-list');
+        const darkToggle = document.getElementById('dark-mode-toggle');
+        const lightText = document.querySelector('.light-text');
+        const darkText = document.querySelector('.dark-text');
+
+        // init
+        function init() {
+            totalQSpan.textContent = quizData.length;
+            totalScoreSpan.textContent = quizData.length;
+            showQuestion();
+            updateProgress();
+
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.body.classList.add('dark-mode');
+                darkToggle.checked = true;
+                updateToggle(true);
+            } else updateToggle(false);
+
+            prevBtn.addEventListener('click', prev);
+            nextBtn.addEventListener('click', next);
+            restartBtn.addEventListener('click', restart);
+            reviewBtn.addEventListener('click', showIncorrect);
+            darkToggle.addEventListener('change', (e) => {
+                document.body.classList.toggle('dark-mode', e.target.checked);
+                updateToggle(e.target.checked);
+            });
+        }
+
+        function updateToggle(isDark) {
+            if (isDark) { lightText.style.opacity = '0.5'; darkText.style.opacity = '1'; }
+            else { lightText.style.opacity = '1'; darkText.style.opacity = '0.5'; }
+        }
+
+        function showQuestion() {
+            currentQSpan.textContent = currentQuestion + 1;
+            scoreSpan.textContent = score;
+
+            const q = quizData[currentQuestion];
+            let optsHtml = '';
+            q.options.forEach((opt, idx) => {
+                let cls = 'option';
+                if (userAnswers[currentQuestion] !== null) {
+                    if (userAnswers[currentQuestion] === idx) cls += ' selected';
+                    if (idx === q.answer && userAnswers[currentQuestion] !== null) cls += ' correct';
+                    if (userAnswers[currentQuestion] === idx && idx !== q.answer) cls += ' incorrect';
+                }
+                optsHtml += `<div class="${cls}" data-index="${idx}">${opt}</div>`;
+            });
+
+            let feedback = '';
+            if (userAnswers[currentQuestion] !== null) {
+                const isCorrect = userAnswers[currentQuestion] === q.answer;
+                const correctLetter = String.fromCharCode(65 + q.answer);
+                const correctText = q.options[q.answer];
+                feedback = `<div class="feedback ${isCorrect ? 'correct' : 'incorrect'}">
+                    ${isCorrect ? '✓ Correct!' : '✗ Incorrect!'} ${!isCorrect ? 'Correct answer: ' + correctLetter + ') ' + correctText : ''}
+                    <br><br>Explanation: ${q.explanation}
+                </div>`;
+            }
+
+            quizContainer.innerHTML = `<div class="question">
+                <div class="question-number">Question ${currentQuestion+1}/${quizData.length}</div>
+                <div class="question-text">${q.question}</div>
+                <div class="options">${optsHtml}</div>
+                ${feedback}
+            </div>`;
+
+            document.querySelectorAll('.option').forEach(opt => opt.addEventListener('click', selectOpt));
+            prevBtn.disabled = currentQuestion === 0;
+            nextBtn.textContent = (currentQuestion === quizData.length-1) ? 'Finish Quiz' : 'Next';
+        }
+
+        function selectOpt(e) {
+            if (userAnswers[currentQuestion] !== null) return;
+            const idx = parseInt(e.currentTarget.dataset.index);
+            userAnswers[currentQuestion] = idx;
+            if (idx === quizData[currentQuestion].answer) {
+                score++;
+            } else {
+                incorrectQuestions.push({
+                    questionNumber: currentQuestion+1,
+                    question: quizData[currentQuestion].question,
+                    userAnswer: idx,
+                    correctAnswer: quizData[currentQuestion].answer,
+                    options: quizData[currentQuestion].options,
+                    explanation: quizData[currentQuestion].explanation
+                });
+            }
+            showQuestion();
+            updateProgress();
+        }
+
+        function updateProgress() {
+            const percent = ((currentQuestion+1) / quizData.length) * 100;
+            progressBar.style.width = percent + '%';
+        }
+
+        function prev() { if (currentQuestion > 0) { currentQuestion--; showQuestion(); } }
+        function next() {
+            if (currentQuestion < quizData.length-1) { currentQuestion++; showQuestion(); }
+            else { showResults(); }
+        }
+
+        function showResults() {
+            quizContainer.style.display = 'none';
+            document.querySelector('.navigation').style.display = 'none';
+            document.querySelector('.progress-container').style.display = 'none';
+            document.querySelector('.stats').style.display = 'none';
+            finalScoreSpan.textContent = score;
+            const percent = (score/quizData.length)*100;
+            let msg = '';
+            if (percent>=80) msg='Excellent! Strong understanding of pharmacodynamics.';
+            else if (percent>=60) msg='Good job! Solid grasp.';
+            else if (percent>=40) msg='Not bad, review some concepts.';
+            else msg='Keep studying! Review the material and try again.';
+            perfMsg.textContent = msg;
+            resultsDiv.style.display = 'block';
+            if (incorrectQuestions.length>0) reviewBtn.style.display='inline-block';
+            else reviewBtn.style.display='none';
+        }
+
+        function showIncorrect() {
+            resultsDiv.style.display = 'none';
+            reviewSection.style.display = 'block';
+            let html = '';
+            incorrectQuestions.forEach(iq => {
+                const correctLetter = String.fromCharCode(65 + iq.correctAnswer);
+                const userLetter = String.fromCharCode(65 + iq.userAnswer);
+                html += `<div class="review-question">
+                    <div class="review-question-number">Question ${iq.questionNumber}</div>
+                    <div class="review-question-text">${iq.question}</div>
+                    <div>Your answer: ${userLetter}) ${iq.options[iq.userAnswer]}</div>
+                    <div class="review-answer review-correct">Correct answer: ${correctLetter}) ${iq.options[iq.correctAnswer]}</div>
+                    <div class="review-explanation">${iq.explanation}</div>
+                </div>`;
+            });
+            incorrectList.innerHTML = html;
+        }
+
+        function restart() {
+            // reshuffle questions
+            quizData = originalQuizData.map(q => shuffleOptions(q));
+            currentQuestion = 0;
+            score = 0;
+            userAnswers = new Array(quizData.length).fill(null);
+            incorrectQuestions = [];
+
+            quizContainer.style.display = 'block';
+            document.querySelector('.navigation').style.display = 'flex';
+            document.querySelector('.progress-container').style.display = 'block';
+            document.querySelector('.stats').style.display = 'flex';
+            resultsDiv.style.display = 'none';
+            reviewSection.style.display = 'none';
+
+            showQuestion();
+            updateProgress();
+        }
+
+        window.onload = init;
+    </script>
+</body>
+</html>

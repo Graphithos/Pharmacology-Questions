@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCQs on Autonomic Pharmacology 2 Quiz</title>
+    <style>
+        :root {
+            --bg-color: #f5f7fa;
+            --container-bg: white;
+            --text-color: #333;
+            --border-color: #ddd;
+            --primary-color: #3498db;
+            --header-color: #2c3e50;
+            --secondary-text: #7f8c8d;
+            --progress-bg: #ecf0f1;
+            --question-bg: #f8f9fa;
+            --option-bg: #fff;
+            --option-hover: #f1f8ff;
+            --option-selected: #d1ecf1;
+            --correct-bg: #d4edda;
+            --correct-border: #28a745;
+            --incorrect-bg: #f8d7da;
+            --incorrect-border: #dc3545;
+            --button-bg: #3498db;
+            --button-hover: #2980b9;
+            --button-disabled: #bdc3c7;
+            --restart-bg: #2ecc71;
+            --restart-hover: #27ae60;
+            --review-bg: #f39c12;
+            --review-hover: #e67e22;
+            --toggle-bg: #ecf0f1;
+            --toggle-slider: white;
+            --toggle-text: #7f8c8d;
+        }
+
+        .dark-mode {
+            --bg-color: #1a1a2e;
+            --container-bg: #16213e;
+            --text-color: #e6e6e6;
+            --border-color: #394867;
+            --primary-color: #4cc9f0;
+            --header-color: #e6e6e6;
+            --secondary-text: #a9a9a9;
+            --progress-bg: #394867;
+            --question-bg: #1f4068;
+            --option-bg: #16213e;
+            --option-hover: #1f4068;
+            --option-selected: #1f4068;
+            --correct-bg: #2d5a2d;
+            --correct-border: #4caf50;
+            --incorrect-bg: #5a2d2d;
+            --incorrect-border: #f44336;
+            --button-bg: #4cc9f0;
+            --button-hover: #3aa8d0;
+            --button-disabled: #5d6d7e;
+            --restart-bg: #2ecc71;
+            --restart-hover: #27ae60;
+            --review-bg: #f39c12;
+            --review-hover: #e67e22;
+            --toggle-bg: #394867;
+            --toggle-slider: #4cc9f0;
+            --toggle-text: #e6e6e6;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--container-bg);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--primary-color);
+            position: relative;
+        }
+        h1 {
+            color: var(--header-color);
+            margin-bottom: 5px;
+            font-size: 24px;
+            transition: color 0.3s;
+        }
+        .author {
+            color: var(--secondary-text);
+            font-style: italic;
+            margin-bottom: 10px;
+            transition: color 0.3s;
+        }
+        .description {
+            color: var(--secondary-text);
+            margin-bottom: 20px;
+            transition: color 0.3s;
+        }
+        .theme-toggle {
+            position: absolute;
+            top: 35px;
+            right: 0;
+            display: flex;
+            align-items: center;
+        }
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 120px;
+            height: 34px;
+        }
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--toggle-bg);
+            transition: .4s;
+            border-radius: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 10px;
+            font-size: 12px;
+            font-weight: bold;
+            color: var(--toggle-text);
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 60px;
+            left: 4px;
+            bottom: 4px;
+            background-color: var(--toggle-slider);
+            transition: .4s;
+            border-radius: 34px;
+            z-index: 1;
+        }
+        .slider-text {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+        .light-text, .dark-text {
+            transition: opacity 0.3s;
+        }
+        .dark-mode .light-text {
+            opacity: 0.5;
+        }
+        .light-text {
+            opacity: 0.5;
+        }
+        .dark-mode .dark-text {
+            opacity: 1;
+        }
+        .dark-text {
+            opacity: 0.5;
+        }
+        input:checked + .slider:before {
+            transform: translateX(52px);
+        }
+        .progress-container {
+            background: var(--progress-bg);
+            border-radius: 5px;
+            margin-bottom: 20px;
+            position: relative;
+            height: 10px;
+            transition: background-color 0.3s;
+        }
+        .progress-bar {
+            height: 100%;
+            background: var(--primary-color);
+            border-radius: 5px;
+            width: 0%;
+            transition: width 0.3s ease, background-color 0.3s;
+        }
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: var(--header-color);
+            transition: color 0.3s;
+        }
+        .question {
+            background: var(--question-bg);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: background-color 0.3s;
+        }
+        .question-number {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            transition: color 0.3s;
+        }
+        .question-text {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+        .options {
+            display: grid;
+            grid-gap: 10px;
+        }
+        .option {
+            padding: 12px 15px;
+            background: var(--option-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .option:hover {
+            background: var(--option-hover);
+            border-color: var(--primary-color);
+        }
+        .option.selected {
+            background: var(--option-selected);
+            border-color: var(--primary-color);
+        }
+        .option.correct {
+            background: var(--correct-bg);
+            border-color: var(--correct-border);
+        }
+        .option.incorrect {
+            background: var(--incorrect-bg);
+            border-color: var(--incorrect-border);
+        }
+        .feedback {
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+            display: none;
+        }
+        .feedback.correct {
+            background: var(--correct-bg);
+            color: var(--text-color);
+            border: 1px solid var(--correct-border);
+            display: block;
+        }
+        .feedback.incorrect {
+            background: var(--incorrect-bg);
+            color: var(--text-color);
+            border: 1px solid var(--incorrect-border);
+            display: block;
+        }
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        button {
+            padding: 10px 20px;
+            background: var(--button-bg);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: var(--button-hover);
+        }
+        button:disabled {
+            background: var(--button-disabled);
+            cursor: not-allowed;
+        }
+        .results {
+            text-align: center;
+            padding: 30px;
+            display: none;
+        }
+        .score {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--header-color);
+        }
+        .score-value {
+            font-size: 48px;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        .restart-btn {
+            margin-top: 20px;
+            background: var(--restart-bg);
+        }
+        .restart-btn:hover {
+            background: var(--restart-hover);
+        }
+        .review-btn {
+            margin-top: 20px;
+            background: var(--review-bg);
+        }
+        .review-btn:hover {
+            background: var(--review-hover);
+        }
+        .review-section {
+            margin-top: 30px;
+            padding: 20px;
+            background: var(--question-bg);
+            border-radius: 8px;
+            display: none;
+        }
+        .review-title {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--header-color);
+            text-align: center;
+        }
+        .review-question {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-left: 4px solid var(--incorrect-border);
+            background: var(--container-bg);
+            border-radius: 4px;
+        }
+        .review-question-number {
+            font-weight: bold;
+            color: var(--incorrect-border);
+            margin-bottom: 8px;
+        }
+        .review-question-text {
+            margin-bottom: 10px;
+        }
+        .review-answer {
+            margin-top: 8px;
+            font-weight: bold;
+        }
+        .review-correct {
+            color: var(--correct-border);
+        }
+        .review-explanation {
+            margin-top: 5px;
+            font-style: italic;
+            color: var(--secondary-text);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>MCQs on Autonomic Pharmacology 2 Quiz</h1>
+            <p class="author">Dr. Samy Salem</p>
+            <p class="description">Test your knowledge of Autonomic Pharmacology 2: adrenergic receptors, sympathomimetics, beta-blockers, and parasympathomimetics</p>
+            <div class="theme-toggle">
+                <label class="switch">
+                    <input type="checkbox" id="dark-mode-toggle">
+                    <span class="slider">
+                        <div class="slider-text">
+                            <span class="light-text">Light</span>
+                            <span class="dark-text">Dark</span>
+                        </div>
+                    </span>
+                </label>
+            </div>
+        </header>
+
+        <div class="progress-container">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+
+        <div class="stats">
+            <div>Question: <span id="current-question">1</span>/<span id="total-questions">45</span></div>
+            <div>Score: <span id="score">0</span>/<span id="total-score">45</span></div>
+        </div>
+
+        <div id="quiz-container">
+            <!-- Questions will be inserted here by JavaScript -->
+        </div>
+
+        <div class="navigation">
+            <button id="prev-btn" disabled>Previous</button>
+            <button id="next-btn">Next</button>
+        </div>
+
+        <div id="results" class="results">
+            <div class="score">Your Score: <span class="score-value" id="final-score">0</span>/45</div>
+            <p id="performance-message"></p>
+            <button class="restart-btn" id="restart-btn">Restart Quiz</button>
+            <button class="review-btn" id="review-btn">Review Incorrect Answers</button>
+        </div>
+
+        <div id="review-section" class="review-section">
+            <h2 class="review-title">Questions Answered Incorrectly</h2>
+            <div id="incorrect-questions-list"></div>
+        </div>
+    </div>
+
+    <script>
+        // Quiz data from Autonomic Pharmacology 2 PDF (extracted from 9. Autonomic Pharmacology 2 (MCQs).pdf)
+        const originalQuizData = [
+            {
+                question: "Which of the following correctly pairs a beta receptor with its location and effect?",
+                options: [
+                    "β1 - smooth muscle - relaxation",
+                    "β2 - heart - increased rate and contractility",
+                    "β2 - smooth muscle of bronchi - relaxation",
+                    "β3 - heart - increased rate"
+                ],
+                answer: 2,
+                explanation: "Page 3"
+            },
+            {
+                question: "Activation of α1 receptors in blood vessels produces which effect?",
+                options: [
+                    "Vasodilation",
+                    "Vasoconstriction",
+                    "No effect",
+                    "Increased permeability"
+                ],
+                answer: 1,
+                explanation: "Page 3"
+            },
+            {
+                question: "β2 receptor stimulation in the uterus produces which effect?",
+                options: [
+                    "Relaxation",
+                    "Contraction",
+                    "No effect",
+                    "Increased tone"
+                ],
+                answer: 0,
+                explanation: "Page 3"
+            },
+            {
+                question: "β3 receptors are located in which tissue and produce which effect?",
+                options: [
+                    "Heart - increased contractility",
+                    "Adipose tissue - lipolysis",
+                    "Bronchi - bronchodilation",
+                    "Liver - glycogenolysis"
+                ],
+                answer: 1,
+                explanation: "Page 3"
+            },
+            {
+                question: "α2 receptors are primarily located in which location and inhibit which process?",
+                options: [
+                    "Postsynaptic smooth muscle - vasoconstriction",
+                    "Heart - increased rate",
+                    "Kidney - renin release",
+                    "Presynaptic nerves - norepinephrine release"
+                ],
+                answer: 3,
+                explanation: "Page 3"
+            },
+            {
+                question: "Which of the following is correct about adreno-receptors?",
+                options: [
+                    "β1 is inhibitory",
+                    "β2 stimulates smooth muscles",
+                    "α1 is stimulatory except for GIT and urinary walls",
+                    "α2 is stimulatory to platelets"
+                ],
+                answer: 2,
+                explanation: "Page 4"
+            },
+            {
+                question: "Dopamine has a dose-dependent effect. The correct order of receptor activation as dose increases is:",
+                options: [
+                    "β1 → D1 → α1",
+                    "D1 → β1 → α1",
+                    "α1 → β1 → D1",
+                    "D1 → α1 → β1"
+                ],
+                answer: 1,
+                explanation: "Page 4"
+            },
+            {
+                question: "Sympathomimetic agents are drugs that partially or completely mimic the actions of:",
+                options: [
+                    "Norepinephrine or epinephrine",
+                    "Acetylcholine",
+                    "Dopamine only",
+                    "Serotonin"
+                ],
+                answer: 0,
+                explanation: "Page 5"
+            },
+            {
+                question: "Indirect-acting sympathomimetics work by which mechanism?",
+                options: [
+                    "Binding directly to adrenergic receptors",
+                    "Causing release of catecholamines from storage sites (vesicles) in nerve endings",
+                    "Blocking adrenergic receptors",
+                    "Inhibiting monoamine oxidase"
+                ],
+                answer: 1,
+                explanation: "Page 7"
+            },
+            {
+                question: "Which of the following is an example of a mixed-acting sympathomimetic (direct + indirect)?",
+                options: [
+                    "Cocaine",
+                    "Amphetamine",
+                    "Ephedrine",
+                    "Tyramine"
+                ],
+                answer: 2,
+                explanation: "Page 6"
+            },
+            {
+                question: "Epinephrine (adrenaline) has which receptor actions?",
+                options: [
+                    "α1 + α2 only",
+                    "β1 + β2 only",
+                    "α1 + α2 + β1 + β2 + β3",
+                    "β2 + β3 only"
+                ],
+                answer: 2,
+                explanation: "Page 8"
+            },
+            {
+                question: "Norepinephrine (noradrenaline) differs from epinephrine in that it has:",
+                options: [
+                    "No β1 action",
+                    "No α action",
+                    "No β3 action",
+                    "No β2 action"
+                ],
+                answer: 3,
+                explanation: "Page 8"
+            },
+            {
+                question: "Isoprenaline (isoproterenol) has which receptor actions?",
+                options: [
+                    "α only",
+                    "β only (β1 + β2 + β3)",
+                    "α and β equally",
+                    "Dopamine receptors only"
+                ],
+                answer: 1,
+                explanation: "Page 8"
+            },
+            {
+                question: "At low dose, dopamine stimulates D1 receptors in renal blood vessels, producing which effect?",
+                options: [
+                    "Vasodilation and increased renal blood flow",
+                    "Vasoconstriction and decreased renal blood flow",
+                    "No change in renal blood flow",
+                    "Increased renin release"
+                ],
+                answer: 0,
+                explanation: "Page 9"
+            },
+            {
+                question: "At moderate concentration, dopamine stimulates β1 receptors in the heart, producing:",
+                options: [
+                    "Positive inotropic, chronotropic, and dromotropic effects",
+                    "Negative inotropic, chronotropic, and dromotropic effects",
+                    "Only negative chronotropic effect",
+                    "Only positive inotropic effect"
+                ],
+                answer: 0,
+                explanation: "Page 9"
+            },
+            {
+                question: "Dopamine is used in various shock and acute renal failure because it:",
+                options: [
+                    "Decreases renal blood flow",
+                    "Increases renal blood flow and improves oliguria",
+                    "Causes vasoconstriction of renal vessels",
+                    "Has no effect on the kidney"
+                ],
+                answer: 1,
+                explanation: "Page 9"
+            },
+            {
+                question: "Fenoldopam is an agonist at which receptor and is used for treating hypertension?",
+                options: [
+                    "D1",
+                    "β1",
+                    "α1",
+                    "D2"
+                ],
+                answer: 0,
+                explanation: "Page 9"
+            },
+            {
+                question: "Phenylephrine is an alpha-1 agonist that causes vasoconstriction, leading to increased total peripheral resistance and increased diastolic blood pressure, followed by:",
+                options: [
+                    "Reflex tachycardia",
+                    "Reflex bradycardia",
+                    "No change in heart rate",
+                    "Tachycardia without reflex"
+                ],
+                answer: 1,
+                explanation: "Page 10"
+            },
+            {
+                question: "Phenylephrine is used as a mydriatic agent in the eye because it produces:",
+                options: [
+                    "Mydriasis with cycloplegia",
+                    "Miosis with cycloplegia",
+                    "Mydriasis without cycloplegia",
+                    "No effect on the pupil"
+                ],
+                answer: 2,
+                explanation: "Page 11"
+            },
+            {
+                question: "Phenylephrine is used in urinary incontinence because it:",
+                options: [
+                    "Relaxes the bladder sphincter",
+                    "Contracts the bladder sphincter (α1) and causes minimal CNS stimulation",
+                    "Increases urine production",
+                    "Decreases bladder tone"
+                ],
+                answer: 1,
+                explanation: "Page 11"
+            },
+            {
+                question: "Salbutamol and salmeterol are selective agonists for which receptor?",
+                options: [
+                    "β1",
+                    "β2",
+                    "α1",
+                    "D1"
+                ],
+                answer: 1,
+                explanation: "Page 12"
+            },
+            {
+                question: "The primary use of salbutamol and salmeterol is:",
+                options: [
+                    "Treatment of bronchial asthma (bronchodilation)",
+                    "Treatment of hypertension",
+                    "Treatment of bradycardia",
+                    "Treatment of glaucoma"
+                ],
+                answer: 0,
+                explanation: "Page 12"
+            },
+            {
+                question: "Selective α1 blockers used in benign prostatic hyperplasia (BPH) include all of the following EXCEPT:",
+                options: [
+                    "Prazosin",
+                    "Doxazosin",
+                    "Tamsulosin",
+                    "Propranolol"
+                ],
+                answer: 3,
+                explanation: "Page 15"
+            },
+            {
+                question: "Non-selective α-blockers are NOT used in hypertension because α2 blockade leads to:",
+                options: [
+                    "Decreased norepinephrine release",
+                    "Increased norepinephrine release, increased heart rate, and loss of antihypertensive effect",
+                    "Bradycardia and hypotension",
+                    "Bronchospasm"
+                ],
+                answer: 1,
+                explanation: "Page 16"
+            },
+            {
+                question: "The first-dose phenomenon (postural hypotension) with α-blockers is managed by:",
+                options: [
+                    "Increasing the initial dose",
+                    "Taking the medication in the morning",
+                    "Making the initial dose small (one third or one fourth of normal dose) and taking it at bedtime",
+                    "Taking the medication with food"
+                ],
+                answer: 2,
+                explanation: "Page 17"
+            },
+            {
+                question: "Propranolol is classified as which generation of beta-blocker?",
+                options: [
+                    "First generation (non-selective β-blocker)",
+                    "Second generation (cardioselective β1 blocker)",
+                    "Third generation (with vasodilator properties)",
+                    "Fourth generation"
+                ],
+                answer: 0,
+                explanation: "Page 18"
+            },
+            {
+                question: "Atenolol is classified as which generation of beta-blocker and has which advantage?",
+                options: [
+                    "First generation - blocks all β receptors",
+                    "Second generation - cardioselective β1 blocker with less bronchospasm",
+                    "Third generation - with vasodilator properties",
+                    "Non-selective with no advantages"
+                ],
+                answer: 1,
+                explanation: "Page 18"
+            },
+            {
+                question: "Carvedilol and labetalol belong to which generation of beta-blockers?",
+                options: [
+                    "First generation",
+                    "Second generation",
+                    "Third generation (having additionally vasodilator properties)",
+                    "Fourth generation"
+                ],
+                answer: 2,
+                explanation: "Page 18"
+            },
+            {
+                question: "Which of the following is a therapeutic use of beta-blockers?",
+                options: [
+                    "Treatment of bronchial asthma",
+                    "Treatment of hypotension",
+                    "Anti-arrhythmic",
+                    "Treatment of bradycardia"
+                ],
+                answer: 2,
+                explanation: "Page 20"
+            },
+            {
+                question: "Propranolol is effective for controlling acute panic symptoms in individuals who are required to perform in public, which is described as:",
+                options: [
+                    "Generalized anxiety disorder",
+                    "Performance anxiety",
+                    "Panic disorder without agoraphobia",
+                    "Social phobia"
+                ],
+                answer: 1,
+                explanation: "Page 21"
+            },
+            {
+                question: "Abrupt discontinuation of β-blockers in ischemic heart disease leads to withdrawal syndrome (rebound angina and arrhythmia) due to:",
+                options: [
+                    "Downregulation of β receptors",
+                    "No change in β receptors",
+                    "Increased α receptor sensitivity",
+                    "Upregulation of β receptors"
+                ],
+                answer: 3,
+                explanation: "Page 22"
+            },
+            {
+                question: "Which of the following is a contraindication for β-blocker therapy?",
+                options: [
+                    "Hypertension",
+                    "Bronchial asthma",
+                    "Glaucoma",
+                    "Migraine prophylaxis"
+                ],
+                answer: 1,
+                explanation: "Page 23"
+            },
+            {
+                question: "Methyldopa and clonidine are centrally acting sympatholytics that work as:",
+                options: [
+                    "α1 agonists",
+                    "β1 agonists",
+                    "α2 agonists (decrease norepinephrine release)",
+                    "Dopamine agonists"
+                ],
+                answer: 2,
+                explanation: "Page 24"
+            },
+            {
+                question: "Methyldopa is used as an antihypertensive especially in:",
+                options: [
+                    "Elderly men",
+                    "Children",
+                    "Pregnancy",
+                    "Athletes"
+                ],
+                answer: 2,
+                explanation: "Page 24"
+            },
+            {
+                question: "Direct-acting parasympathomimetics of the choline ester type include acetylcholine, methacholine, bethanechol, carbachol, and:",
+                options: [
+                    "Pilocarpine",
+                    "Physostigmine",
+                    "Neostigmine",
+                    "Atropine"
+                ],
+                answer: 0,
+                explanation: "Page 29"
+            },
+            {
+                question: "Indirect-acting parasympathomimetics (anticholinesterases) work by:",
+                options: [
+                    "Binding directly to muscarinic receptors",
+                    "Inhibiting cholinesterase enzyme, leading to increased acetylcholine",
+                    "Blocking nicotinic receptors",
+                    "Releasing acetylcholine from nerve terminals"
+                ],
+                answer: 1,
+                explanation: "Page 29"
+            },
+            {
+                question: "The mnemonic DUMBBELSS is used to remember the signs of:",
+                options: [
+                    "Atropine overdose",
+                    "Sympathomimetic toxicity",
+                    "Cholinergic toxicity",
+                    "Dopamine overdose"
+                ],
+                answer: 2,
+                explanation: "Page 30"
+            },
+            {
+                question: "In the DUMBBELSS mnemonic, the letters stand for diarrhea, urination, miosis, bradycardia, bronchospasm, excitation, lacrimation, salivation, and:",
+                options: [
+                    "Seizures",
+                    "Syncope",
+                    "Somnolence",
+                    "Sweating"
+                ],
+                answer: 3,
+                explanation: "Page 30"
+            },
+            {
+                question: "The treatment of organophosphorus poisoning includes atropine as an antidote and which other drug to regenerate and reactivate cholinesterase?",
+                options: [
+                    "Diazepam",
+                    "Pralidoxime (PAM)",
+                    "Neostigmine",
+                    "Physostigmine"
+                ],
+                answer: 1,
+                explanation: "Page 31"
+            },
+            {
+                question: "Atropine is a competitive antagonist that blocks all muscarinic receptors. Its actions on the eye include:",
+                options: [
+                    "Passive mydriasis with cycloplegia",
+                    "Active miosis and cyclospasm",
+                    "Passive mydriasis without cycloplegia",
+                    "Increased lacrimation"
+                ],
+                answer: 0,
+                explanation: "Page 36"
+            },
+            {
+                question: "Atropine-induced cycloplegia refers to:",
+                options: [
+                    "Dilatation of the pupil",
+                    "Paralysis of the ciliary muscle causing loss of accommodation to near vision",
+                    "Increased intraocular pressure only",
+                    "Constriction of the pupil"
+                ],
+                answer: 1,
+                explanation: "Page 36"
+            },
+            {
+                question: "At moderate to high doses, atropine produces tachycardia by blocking which receptors in the heart?",
+                options: [
+                    "β1",
+                    "M2",
+                    "M3",
+                    "α1"
+                ],
+                answer: 1,
+                explanation: "Page 38"
+            },
+            {
+                question: "The antidote for atropine poisoning is:",
+                options: [
+                    "Pralidoxime",
+                    "Neostigmine",
+                    "Physostigmine",
+                    "Atropine (further doses)"
+                ],
+                answer: 2,
+                explanation: "Page 41"
+            },
+            {
+                question: "The mnemonic ABCD'S for anticholinergic side effects of atropine includes Agitation, Blurred vision, Constipation, Dry mouth, Dilated pupils, Sedation, Stasis of urine, and:",
+                options: [
+                    "Seizures",
+                    "Sweating",
+                    "Syncope",
+                    "Sandy eyes"
+                ],
+                answer: 3,
+                explanation: "Page 42"
+            },
+            {
+                question: "Atropine is contraindicated in all of the following EXCEPT:",
+                options: [
+                    "Patients with glaucoma",
+                    "Children (atropine fever)",
+                    "Elderly men with prostatic hyperplasia",
+                    "Patients with bradycardia"
+                ],
+                answer: 3,
+                explanation: "Page 43"
+            }
+        ];
+
+        // Function to shuffle an array (Fisher-Yates algorithm)
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        // Function to create a randomized version of the quiz data
+        function createRandomizedQuizData() {
+            const randomizedData = [];
+            
+            originalQuizData.forEach(question => {
+                // Create a copy of the original question
+                const randomizedQuestion = {
+                    question: question.question,
+                    options: [...question.options], // Copy options array
+                    originalAnswer: question.answer, // Store original answer index
+                    explanation: question.explanation
+                };
+                
+                // Create an array of indices [0, 1, 2, 3]
+                const indices = [0, 1, 2, 3];
+                
+                // Shuffle the indices
+                shuffleArray(indices);
+                
+                // Create a new options array with shuffled order
+                const shuffledOptions = indices.map(index => question.options[index]);
+                
+                // Find the new position of the correct answer
+                const newAnswerIndex = indices.indexOf(question.answer);
+                
+                // Update the question with shuffled options and new answer
+                randomizedQuestion.options = shuffledOptions;
+                randomizedQuestion.answer = newAnswerIndex;
+                
+                randomizedData.push(randomizedQuestion);
+            });
+            
+            return randomizedData;
+        }
+
+        // Create randomized quiz data
+        let quizData = createRandomizedQuizData();
+
+        // Quiz state variables
+        let currentQuestion = 0;
+        let score = 0;
+        let userAnswers = new Array(quizData.length).fill(null);
+        let incorrectQuestions = [];
+
+        // DOM elements
+        const quizContainer = document.getElementById('quiz-container');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const progressBar = document.getElementById('progress-bar');
+        const currentQuestionEl = document.getElementById('current-question');
+        const totalQuestionsEl = document.getElementById('total-questions');
+        const scoreEl = document.getElementById('score');
+        const totalScoreEl = document.getElementById('total-score');
+        const resultsContainer = document.getElementById('results');
+        const finalScoreEl = document.getElementById('final-score');
+        const performanceMessageEl = document.getElementById('performance-message');
+        const restartBtn = document.getElementById('restart-btn');
+        const reviewBtn = document.getElementById('review-btn');
+        const reviewSection = document.getElementById('review-section');
+        const incorrectQuestionsList = document.getElementById('incorrect-questions-list');
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const lightText = document.querySelector('.light-text');
+        const darkText = document.querySelector('.dark-text');
+
+        // Initialize quiz
+        function initQuiz() {
+            totalQuestionsEl.textContent = quizData.length;
+            totalScoreEl.textContent = quizData.length;
+            showQuestion();
+            updateProgressBar();
+            
+            // Initialize dark mode based on system preference
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.body.classList.add('dark-mode');
+                darkModeToggle.checked = true;
+                updateToggleText(true);
+            } else {
+                updateToggleText(false);
+            }
+            
+            // Event listeners
+            prevBtn.addEventListener('click', showPreviousQuestion);
+            nextBtn.addEventListener('click', showNextQuestion);
+            restartBtn.addEventListener('click', restartQuiz);
+            reviewBtn.addEventListener('click', showIncorrectQuestions);
+            darkModeToggle.addEventListener('change', toggleDarkMode);
+        }
+
+        // Toggle dark mode
+        function toggleDarkMode() {
+            const isDarkMode = darkModeToggle.checked;
+            document.body.classList.toggle('dark-mode', isDarkMode);
+            updateToggleText(isDarkMode);
+        }
+
+        // Update toggle text opacity
+        function updateToggleText(isDarkMode) {
+            if (isDarkMode) {
+                lightText.style.opacity = '0.5';
+                darkText.style.opacity = '1';
+            } else {
+                lightText.style.opacity = '1';
+                darkText.style.opacity = '0.5';
+            }
+        }
+
+        // Show current question
+        function showQuestion() {
+            currentQuestionEl.textContent = currentQuestion + 1;
+            scoreEl.textContent = score;
+            
+            const question = quizData[currentQuestion];
+            let optionsHTML = '';
+            
+            question.options.forEach((option, index) => {
+                let optionClass = 'option';
+                if (userAnswers[currentQuestion] === index) {
+                    optionClass += ' selected';
+                    if (index === question.answer) {
+                        optionClass += ' correct';
+                    } else {
+                        optionClass += ' incorrect';
+                    }
+                }
+                
+                optionsHTML += `
+                    <div class="${optionClass}" data-index="${index}">
+                        ${String.fromCharCode(65 + index)}) ${option}
+                    </div>
+                `;
+            });
+            
+            let feedbackHTML = '';
+            if (userAnswers[currentQuestion] !== null) {
+                const isCorrect = userAnswers[currentQuestion] === question.answer;
+                const correctLetter = String.fromCharCode(65 + question.answer);
+                const correctAnswerText = question.options[question.answer];
+                
+                feedbackHTML = `
+                    <div class="feedback ${isCorrect ? 'correct' : 'incorrect'}">
+                        ${isCorrect ? '✓ Correct!' : '✗ Incorrect!'} 
+                        ${!isCorrect ? `Correct answer: ${correctLetter}) ${correctAnswerText}` : ''}
+                        <br><br>Explanation: ${question.explanation}
+                    </div>
+                `;
+            }
+            
+            quizContainer.innerHTML = `
+                <div class="question">
+                    <div class="question-number">Question ${currentQuestion + 1}/${quizData.length}</div>
+                    <div class="question-text">${question.question}</div>
+                    <div class="options">${optionsHTML}</div>
+                    ${feedbackHTML}
+                </div>
+            `;
+            
+            // Add event listeners to options
+            const optionElements = quizContainer.querySelectorAll('.option');
+            optionElements.forEach(option => {
+                option.addEventListener('click', selectOption);
+            });
+            
+            // Update navigation buttons
+            prevBtn.disabled = currentQuestion === 0;
+            nextBtn.textContent = currentQuestion === quizData.length - 1 ? 'Finish Quiz' : 'Next';
+        }
+
+        // Select an option
+        function selectOption(e) {
+            if (userAnswers[currentQuestion] !== null) return; // Already answered
+            
+            const selectedOption = e.currentTarget;
+            const selectedIndex = parseInt(selectedOption.dataset.index);
+            
+            userAnswers[currentQuestion] = selectedIndex;
+            
+            // Check if answer is correct
+            if (selectedIndex === quizData[currentQuestion].answer) {
+                score++;
+                scoreEl.textContent = score;
+            } else {
+                // Add to incorrect questions list
+                incorrectQuestions.push({
+                    question: quizData[currentQuestion].question,
+                    userAnswer: selectedIndex,
+                    correctAnswer: quizData[currentQuestion].answer,
+                    options: quizData[currentQuestion].options,
+                    explanation: quizData[currentQuestion].explanation,
+                    questionNumber: currentQuestion + 1
+                });
+            }
+            
+            showQuestion();
+            updateProgressBar();
+        }
+
+        // Show next question
+        function showNextQuestion() {
+            if (currentQuestion < quizData.length - 1) {
+                currentQuestion++;
+                showQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        // Show previous question
+        function showPreviousQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                showQuestion();
+            }
+        }
+
+        // Update progress bar
+        function updateProgressBar() {
+            const progress = ((currentQuestion + 1) / quizData.length) * 100;
+            progressBar.style.width = `${progress}%`;
+        }
+
+        // Show results
+        function showResults() {
+            quizContainer.style.display = 'none';
+            document.querySelector('.navigation').style.display = 'none';
+            document.querySelector('.progress-container').style.display = 'none';
+            document.querySelector('.stats').style.display = 'none';
+            
+            finalScoreEl.textContent = score;
+            
+            // Performance message
+            const percentage = (score / quizData.length) * 100;
+            let message = '';
+            if (percentage >= 80) {
+                message = 'Excellent! You have a strong understanding of Autonomic Pharmacology 2.';
+            } else if (percentage >= 60) {
+                message = 'Good job! You have a solid grasp of the material.';
+            } else if (percentage >= 40) {
+                message = 'Not bad! Review the material and try again.';
+            } else {
+                message = 'Keep studying! Review the lectures and try again.';
+            }
+            
+            performanceMessageEl.textContent = message;
+            resultsContainer.style.display = 'block';
+            
+            // Show review button only if there are incorrect answers
+            if (incorrectQuestions.length > 0) {
+                reviewBtn.style.display = 'inline-block';
+            } else {
+                reviewBtn.style.display = 'none';
+            }
+        }
+
+        // Show incorrect questions
+        function showIncorrectQuestions() {
+            resultsContainer.style.display = 'none';
+            reviewSection.style.display = 'block';
+            
+            let incorrectHTML = '';
+            incorrectQuestions.forEach((item, index) => {
+                const correctLetter = String.fromCharCode(65 + item.correctAnswer);
+                const userLetter = String.fromCharCode(65 + item.userAnswer);
+                
+                incorrectHTML += `
+                    <div class="review-question">
+                        <div class="review-question-number">Question ${item.questionNumber}</div>
+                        <div class="review-question-text">${item.question}</div>
+                        <div>Your answer: ${userLetter}) ${item.options[item.userAnswer]}</div>
+                        <div class="review-answer review-correct">Correct answer: ${correctLetter}) ${item.options[item.correctAnswer]}</div>
+                        <div class="review-explanation">${item.explanation}</div>
+                    </div>
+                `;
+            });
+            
+            incorrectQuestionsList.innerHTML = incorrectHTML;
+        }
+
+        // Restart quiz
+        function restartQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            userAnswers = new Array(quizData.length).fill(null);
+            incorrectQuestions = [];
+            
+            // Re-randomize the quiz data when restarting
+            quizData = createRandomizedQuizData();
+            
+            quizContainer.style.display = 'block';
+            document.querySelector('.navigation').style.display = 'flex';
+            document.querySelector('.progress-container').style.display = 'block';
+            document.querySelector('.stats').style.display = 'flex';
+            resultsContainer.style.display = 'none';
+            reviewSection.style.display = 'none';
+            
+            showQuestion();
+            updateProgressBar();
+        }
+
+        // Initialize the quiz when the page loads
+        window.onload = initQuiz;
+    </script>
+</body>
+</html>

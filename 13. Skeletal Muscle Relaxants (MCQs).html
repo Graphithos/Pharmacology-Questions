@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCQs on Skeletal Muscle Relaxants Quiz</title>
+    <style>
+        :root {
+            --bg-color: #f5f7fa;
+            --container-bg: white;
+            --text-color: #333;
+            --border-color: #ddd;
+            --primary-color: #3498db;
+            --header-color: #2c3e50;
+            --secondary-text: #7f8c8d;
+            --progress-bg: #ecf0f1;
+            --question-bg: #f8f9fa;
+            --option-bg: #fff;
+            --option-hover: #f1f8ff;
+            --option-selected: #d1ecf1;
+            --correct-bg: #d4edda;
+            --correct-border: #28a745;
+            --incorrect-bg: #f8d7da;
+            --incorrect-border: #dc3545;
+            --button-bg: #3498db;
+            --button-hover: #2980b9;
+            --button-disabled: #bdc3c7;
+            --restart-bg: #2ecc71;
+            --restart-hover: #27ae60;
+            --review-bg: #f39c12;
+            --review-hover: #e67e22;
+            --toggle-bg: #ecf0f1;
+            --toggle-slider: white;
+            --toggle-text: #7f8c8d;
+        }
+
+        .dark-mode {
+            --bg-color: #1a1a2e;
+            --container-bg: #16213e;
+            --text-color: #e6e6e6;
+            --border-color: #394867;
+            --primary-color: #4cc9f0;
+            --header-color: #e6e6e6;
+            --secondary-text: #a9a9a9;
+            --progress-bg: #394867;
+            --question-bg: #1f4068;
+            --option-bg: #16213e;
+            --option-hover: #1f4068;
+            --option-selected: #1f4068;
+            --correct-bg: #2d5a2d;
+            --correct-border: #4caf50;
+            --incorrect-bg: #5a2d2d;
+            --incorrect-border: #f44336;
+            --button-bg: #4cc9f0;
+            --button-hover: #3aa8d0;
+            --button-disabled: #5d6d7e;
+            --restart-bg: #2ecc71;
+            --restart-hover: #27ae60;
+            --review-bg: #f39c12;
+            --review-hover: #e67e22;
+            --toggle-bg: #394867;
+            --toggle-slider: #4cc9f0;
+            --toggle-text: #e6e6e6;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--container-bg);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--primary-color);
+            position: relative;
+        }
+        h1 {
+            color: var(--header-color);
+            margin-bottom: 5px;
+            font-size: 24px;
+            transition: color 0.3s;
+        }
+        .author {
+            color: var(--secondary-text);
+            font-style: italic;
+            margin-bottom: 10px;
+            transition: color 0.3s;
+        }
+        .description {
+            color: var(--secondary-text);
+            margin-bottom: 20px;
+            transition: color 0.3s;
+        }
+        .theme-toggle {
+            position: absolute;
+            top: 35px;
+            right: 0;
+            display: flex;
+            align-items: center;
+        }
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 120px;
+            height: 34px;
+        }
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--toggle-bg);
+            transition: .4s;
+            border-radius: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 10px;
+            font-size: 12px;
+            font-weight: bold;
+            color: var(--toggle-text);
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 60px;
+            left: 4px;
+            bottom: 4px;
+            background-color: var(--toggle-slider);
+            transition: .4s;
+            border-radius: 34px;
+            z-index: 1;
+        }
+        .slider-text {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+        .light-text, .dark-text {
+            transition: opacity 0.3s;
+        }
+        .dark-mode .light-text {
+            opacity: 0.5;
+        }
+        .light-text {
+            opacity: 0.5;
+        }
+        .dark-mode .dark-text {
+            opacity: 1;
+        }
+        .dark-text {
+            opacity: 0.5;
+        }
+        input:checked + .slider:before {
+            transform: translateX(52px);
+        }
+        .progress-container {
+            background: var(--progress-bg);
+            border-radius: 5px;
+            margin-bottom: 20px;
+            position: relative;
+            height: 10px;
+            transition: background-color 0.3s;
+        }
+        .progress-bar {
+            height: 100%;
+            background: var(--primary-color);
+            border-radius: 5px;
+            width: 0%;
+            transition: width 0.3s ease, background-color 0.3s;
+        }
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: var(--header-color);
+            transition: color 0.3s;
+        }
+        .question {
+            background: var(--question-bg);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: background-color 0.3s;
+        }
+        .question-number {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            transition: color 0.3s;
+        }
+        .question-text {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+        .options {
+            display: grid;
+            grid-gap: 10px;
+        }
+        .option {
+            padding: 12px 15px;
+            background: var(--option-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .option:hover {
+            background: var(--option-hover);
+            border-color: var(--primary-color);
+        }
+        .option.selected {
+            background: var(--option-selected);
+            border-color: var(--primary-color);
+        }
+        .option.correct {
+            background: var(--correct-bg);
+            border-color: var(--correct-border);
+        }
+        .option.incorrect {
+            background: var(--incorrect-bg);
+            border-color: var(--incorrect-border);
+        }
+        .feedback {
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+            display: none;
+        }
+        .feedback.correct {
+            background: var(--correct-bg);
+            color: var(--text-color);
+            border: 1px solid var(--correct-border);
+            display: block;
+        }
+        .feedback.incorrect {
+            background: var(--incorrect-bg);
+            color: var(--text-color);
+            border: 1px solid var(--incorrect-border);
+            display: block;
+        }
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        button {
+            padding: 10px 20px;
+            background: var(--button-bg);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: var(--button-hover);
+        }
+        button:disabled {
+            background: var(--button-disabled);
+            cursor: not-allowed;
+        }
+        .results {
+            text-align: center;
+            padding: 30px;
+            display: none;
+        }
+        .score {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--header-color);
+        }
+        .score-value {
+            font-size: 48px;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        .restart-btn {
+            margin-top: 20px;
+            background: var(--restart-bg);
+        }
+        .restart-btn:hover {
+            background: var(--restart-hover);
+        }
+        .review-btn {
+            margin-top: 20px;
+            background: var(--review-bg);
+        }
+        .review-btn:hover {
+            background: var(--review-hover);
+        }
+        .review-section {
+            margin-top: 30px;
+            padding: 20px;
+            background: var(--question-bg);
+            border-radius: 8px;
+            display: none;
+        }
+        .review-title {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--header-color);
+            text-align: center;
+        }
+        .review-question {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-left: 4px solid var(--incorrect-border);
+            background: var(--container-bg);
+            border-radius: 4px;
+        }
+        .review-question-number {
+            font-weight: bold;
+            color: var(--incorrect-border);
+            margin-bottom: 8px;
+        }
+        .review-question-text {
+            margin-bottom: 10px;
+        }
+        .review-answer {
+            margin-top: 8px;
+            font-weight: bold;
+        }
+        .review-correct {
+            color: var(--correct-border);
+        }
+        .review-explanation {
+            margin-top: 5px;
+            font-style: italic;
+            color: var(--secondary-text);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>MCQs on Skeletal Muscle Relaxants Quiz</h1>
+            <p class="author">Dr. Samy Salem</p>
+            <p class="description">Test your knowledge of Skeletal Muscle Relaxants: spasmolytics, neuromuscular blockers, and centrally acting agents</p>
+            <div class="theme-toggle">
+                <label class="switch">
+                    <input type="checkbox" id="dark-mode-toggle">
+                    <span class="slider">
+                        <div class="slider-text">
+                            <span class="light-text">Light</span>
+                            <span class="dark-text">Dark</span>
+                        </div>
+                    </span>
+                </label>
+            </div>
+        </header>
+
+        <div class="progress-container">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+
+        <div class="stats">
+            <div>Question: <span id="current-question">1</span>/<span id="total-questions">35</span></div>
+            <div>Score: <span id="score">0</span>/<span id="total-score">35</span></div>
+        </div>
+
+        <div id="quiz-container">
+            <!-- Questions will be inserted here by JavaScript -->
+        </div>
+
+        <div class="navigation">
+            <button id="prev-btn" disabled>Previous</button>
+            <button id="next-btn">Next</button>
+        </div>
+
+        <div id="results" class="results">
+            <div class="score">Your Score: <span class="score-value" id="final-score">0</span>/35</div>
+            <p id="performance-message"></p>
+            <button class="restart-btn" id="restart-btn">Restart Quiz</button>
+            <button class="review-btn" id="review-btn">Review Incorrect Answers</button>
+        </div>
+
+        <div id="review-section" class="review-section">
+            <h2 class="review-title">Questions Answered Incorrectly</h2>
+            <div id="incorrect-questions-list"></div>
+        </div>
+    </div>
+
+    <script>
+        // Quiz data from Skeletal Muscle Relaxants PDF (extracted from 13. Skeletal Muscle Relaxants (MCQs).pdf)
+        const originalQuizData = [
+            {
+                question: "Spasmolytics are drugs that return hypertonic muscle to normal tone, but do not produce:",
+                options: [
+                    "CNS depression",
+                    "Paralysis",
+                    "Muscle relaxation",
+                    "Sedation"
+                ],
+                answer: 1,
+                explanation: "Page 3"
+            },
+            {
+                question: "Neuromuscular blockers (NMBs) act by blocking which receptors on the motor end plate?",
+                options: [
+                    "Muscarinic receptors",
+                    "Nicotinic (Nm) receptors",
+                    "Adrenergic receptors",
+                    "GABA receptors"
+                ],
+                answer: 1,
+                explanation: "Page 3"
+            },
+            {
+                question: "Which of the following is a route of administration for spasmolytics?",
+                options: [
+                    "Orally and parenterally",
+                    "IV only",
+                    "Topically only",
+                    "Inhalation only"
+                ],
+                answer: 0,
+                explanation: "Page 3"
+            },
+            {
+                question: "Neuromuscular blockers (NMBs) are given by which route?",
+                options: [
+                    "Orally",
+                    "Intravenously only",
+                    "Subcutaneously only",
+                    "Intramuscularly only"
+                ],
+                answer: 1,
+                explanation: "Page 3"
+            },
+            {
+                question: "Spasmolytics are indicated for which of the following conditions?",
+                options: [
+                    "Relaxation during short surgical procedures",
+                    "Endotracheal intubation",
+                    "Electroconvulsive therapy",
+                    "Spastic conditions (muscle spasm)"
+                ],
+                answer: 3,
+                explanation: "Page 3"
+            },
+            {
+                question: "Non-depolarizing neuromuscular blockers act as:",
+                options: [
+                    "Competitive antagonists with acetylcholine at Nm receptors",
+                    "Agonists at Nm receptors",
+                    "Irreversible inhibitors of acetylcholinesterase",
+                    "Depolarizing agents at the motor end plate"
+                ],
+                answer: 0,
+                explanation: "Page 5"
+            },
+            {
+                question: "The antagonism of non-depolarizing neuromuscular blockers is achieved by:",
+                options: [
+                    "Decreasing acetylcholine concentration at the motor end plate",
+                    "Directly stimulating Nm receptors",
+                    "Increasing acetylcholine concentration at the motor end plate using cholinesterase inhibitors",
+                    "Blocking calcium release from the sarcoplasmic reticulum"
+                ],
+                answer: 2,
+                explanation: "Page 5"
+            },
+            {
+                question: "Pancuronium is classified as which type of neuromuscular blocker?",
+                options: [
+                    "Short acting (15-20 min)",
+                    "Intermediate acting (30-40 min)",
+                    "Long acting (120-180 min)",
+                    "Ultra-short acting"
+                ],
+                answer: 2,
+                explanation: "Page 6"
+            },
+            {
+                question: "Cis-atracurium and vecuronium are classified as:",
+                options: [
+                    "Long acting neuromuscular blockers (120-180 min)",
+                    "Intermediate acting neuromuscular blockers (30-40 min)",
+                    "Short acting neuromuscular blockers (15-20 min)",
+                    "Depolarizing neuromuscular blockers"
+                ],
+                answer: 1,
+                explanation: "Page 7"
+            },
+            {
+                question: "Mivacurium is classified as:",
+                options: [
+                    "Long acting neuromuscular blocker (120-180 min)",
+                    "Intermediate acting neuromuscular blocker (30-40 min)",
+                    "Short acting neuromuscular blocker (15-20 min)",
+                    "Depolarizing neuromuscular blocker"
+                ],
+                answer: 2,
+                explanation: "Page 7"
+            },
+            {
+                question: "Cis-atracurium can cause transient hypotension and bronchospasm due to:",
+                options: [
+                    "Histamine release",
+                    "Autonomic ganglion blocking action",
+                    "Direct cardiac depression",
+                    "Inhibition of acetylcholinesterase"
+                ],
+                answer: 0,
+                explanation: "Page 8"
+            },
+            {
+                question: "Histamine release from cis-atracurium can be prevented by:",
+                options: [
+                    "Atropine pretreatment",
+                    "Anti-histamine pretreatment",
+                    "Neostigmine pretreatment",
+                    "Corticosteroid pretreatment"
+                ],
+                answer: 1,
+                explanation: "Page 8"
+            },
+            {
+                question: "Cis-atracurium should be avoided in patients with:",
+                options: [
+                    "Hypertension",
+                    "Bronchial asthma",
+                    "Diabetes mellitus",
+                    "Renal failure"
+                ],
+                answer: 1,
+                explanation: "Page 8"
+            },
+            {
+                question: "Succinylcholine is classified as which type of neuromuscular blocker?",
+                options: [
+                    "Non-depolarizing",
+                    "Competitive antagonist",
+                    "Centrally acting spasmolytic",
+                    "Depolarizing"
+                ],
+                answer: 3,
+                explanation: "Page 9"
+            },
+            {
+                question: "The normal duration of action of succinylcholine is:",
+                options: [
+                    "15-20 minutes",
+                    "30-40 minutes",
+                    "5-10 minutes",
+                    "120-180 minutes"
+                ],
+                answer: 2,
+                explanation: "Page 10"
+            },
+            {
+                question: "Succinylcholine is hydrolyzed by:",
+                options: [
+                    "Plasma pseudo-cholinesterase",
+                    "Acetylcholinesterase",
+                    "Monoamine oxidase",
+                    "Catechol-O-methyltransferase"
+                ],
+                answer: 0,
+                explanation: "Page 10"
+            },
+            {
+                question: "Apnea after succinylcholine administration can occur in patients with atypical or deficient cholinesterase due to conditions such as liver disease, malnutrition, and:",
+                options: [
+                    "Diabetes mellitus",
+                    "Organophosphorus poisoning",
+                    "Hypertension",
+                    "Asthma"
+                ],
+                answer: 1,
+                explanation: "Page 10"
+            },
+            {
+                question: "Treatment of apnea caused by succinylcholine includes artificial respiration and:",
+                options: [
+                    "Atropine",
+                    "Fresh blood transfusion (containing pseudo-cholinesterase)",
+                    "Neostigmine",
+                    "Calcium gluconate"
+                ],
+                answer: 1,
+                explanation: "Page 10"
+            },
+            {
+                question: "Which of the following is an adverse reaction to succinylcholine due to muscle depolarization?",
+                options: [
+                    "Bradycardia",
+                    "Hypokalemia",
+                    "Decreased intraocular pressure",
+                    "Malignant hyperthermia"
+                ],
+                answer: 3,
+                explanation: "Page 11"
+            },
+            {
+                question: "Succinylcholine causes an increase in intraocular pressure due to:",
+                options: [
+                    "Relaxation of extraocular muscles",
+                    "Contraction of extraocular muscles",
+                    "Increased aqueous humor production",
+                    "Decreased aqueous humor drainage"
+                ],
+                answer: 1,
+                explanation: "Page 11"
+            },
+            {
+                question: "Succinylcholine increases intragastric pressure, which can lead to:",
+                options: [
+                    "Gastric regurgitation and vomiting",
+                    "Constipation",
+                    "Peptic ulcer",
+                    "Gastric bleeding"
+                ],
+                answer: 0,
+                explanation: "Page 11"
+            },
+            {
+                question: "Succinylcholine is used to facilitate endotracheal intubation because of its:",
+                options: [
+                    "Rapid onset and short duration",
+                    "Long duration of action",
+                    "Lack of adverse effects",
+                    "Oral bioavailability"
+                ],
+                answer: 0,
+                explanation: "Page 12"
+            },
+            {
+                question: "Succinylcholine is used before electroconvulsive therapy to:",
+                options: [
+                    "Increase seizure duration",
+                    "Prevent bone fracture or collapse",
+                    "Reduce memory loss",
+                    "Decrease intracranial pressure"
+                ],
+                answer: 1,
+                explanation: "Page 12"
+            },
+            {
+                question: "Non-depolarizing neuromuscular blockers are used in the intensive care unit (ICU) to:",
+                options: [
+                    "Sedate agitated patients",
+                    "Produce respiratory muscle paralysis so as not to interfere with mechanical ventilation",
+                    "Treat muscle spasms",
+                    "Reduce intracranial pressure"
+                ],
+                answer: 1,
+                explanation: "Page 12"
+            },
+            {
+                question: "Baclofen acts by stimulating which receptors?",
+                options: [
+                    "Glycine receptors",
+                    "Nicotinic receptors",
+                    "Dopamine receptors",
+                    "Presynaptic GABA-B receptors"
+                ],
+                answer: 3,
+                explanation: "Page 13"
+            },
+            {
+                question: "The mechanism of action of baclofen leads to:",
+                options: [
+                    "Increased release of excitatory transmitters",
+                    "Decreased release of excitatory transmitters and inhibition of mono-and polysynaptic reflexes",
+                    "Direct muscle paralysis",
+                    "Blockade of calcium channels in skeletal muscle"
+                ],
+                answer: 1,
+                explanation: "Page 13"
+            },
+            {
+                question: "Dantrolene acts peripherally by:",
+                options: [
+                    "Inhibiting release of calcium from the sarcoplasmic reticulum in skeletal muscles",
+                    "Stimulating GABA-B receptors",
+                    "Blocking Nm receptors",
+                    "Stimulating glycine receptors"
+                ],
+                answer: 0,
+                explanation: "Page 13"
+            },
+            {
+                question: "Which of the following is an adverse effect of dantrolene?",
+                options: [
+                    "Nystagmus",
+                    "Diplopia",
+                    "Hepatotoxicity",
+                    "Hemolysis"
+                ],
+                answer: 2,
+                explanation: "Page 13"
+            },
+            {
+                question: "Mephenesin acts by stimulating glycine receptors and is almost not used except in:",
+                options: [
+                    "Tetanus",
+                    "Strychnine toxicity",
+                    "Multiple sclerosis",
+                    "Cerebral palsy"
+                ],
+                answer: 1,
+                explanation: "Page 13"
+            },
+            {
+                question: "Myasthenia gravis is characterized by marked weakness of skeletal muscles due to:",
+                options: [
+                    "Excessive acetylcholine release",
+                    "Impaired neuromuscular transmission (decreased ACh or decreased Nm receptors due to antibodies)",
+                    "Increased calcium release from sarcoplasmic reticulum",
+                    "Overactivity of cholinesterase"
+                ],
+                answer: 1,
+                explanation: "Page 14"
+            },
+            {
+                question: "The treatment of myasthenia gravis includes cholinesterase inhibitors (pyridostigmine or neostigmine) combined with:",
+                options: [
+                    "Atropine",
+                    "Baclofen",
+                    "Dantrolene",
+                    "Succinylcholine"
+                ],
+                answer: 0,
+                explanation: "Page 15"
+            },
+            {
+                question: "Immunosuppressive treatment for myasthenia gravis includes corticosteroids, cyclosporine, and:",
+                options: [
+                    "Azathioprine",
+                    "Thymectomy",
+                    "Methotrexate",
+                    "Intravenous immunoglobulin"
+                ],
+                answer: 1,
+                explanation: "Page 15"
+            },
+            {
+                question: "Spasmolytics are used in the treatment of skeletal muscle spasm caused by all of the following EXCEPT:",
+                options: [
+                    "Myositis",
+                    "Arthritis",
+                    "Trauma",
+                    "Myasthenia gravis"
+                ],
+                answer: 3,
+                explanation: "Page 13"
+            },
+            {
+                question: "An adverse effect of mephenesin is hemolysis leading to:",
+                options: [
+                    "Jaundice",
+                    "Hemoglobinuria",
+                    "Anemia",
+                    "Thrombocytopenia"
+                ],
+                answer: 1,
+                explanation: "Page 13"
+            },
+            {
+                question: "During depolarizing neuromuscular blockade, which muscles are paralyzed last?",
+                options: [
+                    "Limb muscles",
+                    "Abdominal muscles",
+                    "Respiratory muscles",
+                    "Extraocular muscles"
+                ],
+                answer: 2,
+                explanation: "Page 10"
+            }
+        ];
+
+        // Function to shuffle an array (Fisher-Yates algorithm)
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        // Function to create a randomized version of the quiz data
+        function createRandomizedQuizData() {
+            const randomizedData = [];
+            
+            originalQuizData.forEach(question => {
+                // Create a copy of the original question
+                const randomizedQuestion = {
+                    question: question.question,
+                    options: [...question.options], // Copy options array
+                    originalAnswer: question.answer, // Store original answer index
+                    explanation: question.explanation
+                };
+                
+                // Create an array of indices [0, 1, 2, 3]
+                const indices = [0, 1, 2, 3];
+                
+                // Shuffle the indices
+                shuffleArray(indices);
+                
+                // Create a new options array with shuffled order
+                const shuffledOptions = indices.map(index => question.options[index]);
+                
+                // Find the new position of the correct answer
+                const newAnswerIndex = indices.indexOf(question.answer);
+                
+                // Update the question with shuffled options and new answer
+                randomizedQuestion.options = shuffledOptions;
+                randomizedQuestion.answer = newAnswerIndex;
+                
+                randomizedData.push(randomizedQuestion);
+            });
+            
+            return randomizedData;
+        }
+
+        // Create randomized quiz data
+        let quizData = createRandomizedQuizData();
+
+        // Quiz state variables
+        let currentQuestion = 0;
+        let score = 0;
+        let userAnswers = new Array(quizData.length).fill(null);
+        let incorrectQuestions = [];
+
+        // DOM elements
+        const quizContainer = document.getElementById('quiz-container');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const progressBar = document.getElementById('progress-bar');
+        const currentQuestionEl = document.getElementById('current-question');
+        const totalQuestionsEl = document.getElementById('total-questions');
+        const scoreEl = document.getElementById('score');
+        const totalScoreEl = document.getElementById('total-score');
+        const resultsContainer = document.getElementById('results');
+        const finalScoreEl = document.getElementById('final-score');
+        const performanceMessageEl = document.getElementById('performance-message');
+        const restartBtn = document.getElementById('restart-btn');
+        const reviewBtn = document.getElementById('review-btn');
+        const reviewSection = document.getElementById('review-section');
+        const incorrectQuestionsList = document.getElementById('incorrect-questions-list');
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const lightText = document.querySelector('.light-text');
+        const darkText = document.querySelector('.dark-text');
+
+        // Initialize quiz
+        function initQuiz() {
+            totalQuestionsEl.textContent = quizData.length;
+            totalScoreEl.textContent = quizData.length;
+            showQuestion();
+            updateProgressBar();
+            
+            // Initialize dark mode based on system preference
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.body.classList.add('dark-mode');
+                darkModeToggle.checked = true;
+                updateToggleText(true);
+            } else {
+                updateToggleText(false);
+            }
+            
+            // Event listeners
+            prevBtn.addEventListener('click', showPreviousQuestion);
+            nextBtn.addEventListener('click', showNextQuestion);
+            restartBtn.addEventListener('click', restartQuiz);
+            reviewBtn.addEventListener('click', showIncorrectQuestions);
+            darkModeToggle.addEventListener('change', toggleDarkMode);
+        }
+
+        // Toggle dark mode
+        function toggleDarkMode() {
+            const isDarkMode = darkModeToggle.checked;
+            document.body.classList.toggle('dark-mode', isDarkMode);
+            updateToggleText(isDarkMode);
+        }
+
+        // Update toggle text opacity
+        function updateToggleText(isDarkMode) {
+            if (isDarkMode) {
+                lightText.style.opacity = '0.5';
+                darkText.style.opacity = '1';
+            } else {
+                lightText.style.opacity = '1';
+                darkText.style.opacity = '0.5';
+            }
+        }
+
+        // Show current question
+        function showQuestion() {
+            currentQuestionEl.textContent = currentQuestion + 1;
+            scoreEl.textContent = score;
+            
+            const question = quizData[currentQuestion];
+            let optionsHTML = '';
+            
+            question.options.forEach((option, index) => {
+                let optionClass = 'option';
+                if (userAnswers[currentQuestion] === index) {
+                    optionClass += ' selected';
+                    if (index === question.answer) {
+                        optionClass += ' correct';
+                    } else {
+                        optionClass += ' incorrect';
+                    }
+                }
+                
+                optionsHTML += `
+                    <div class="${optionClass}" data-index="${index}">
+                        ${String.fromCharCode(65 + index)}) ${option}
+                    </div>
+                `;
+            });
+            
+            let feedbackHTML = '';
+            if (userAnswers[currentQuestion] !== null) {
+                const isCorrect = userAnswers[currentQuestion] === question.answer;
+                const correctLetter = String.fromCharCode(65 + question.answer);
+                const correctAnswerText = question.options[question.answer];
+                
+                feedbackHTML = `
+                    <div class="feedback ${isCorrect ? 'correct' : 'incorrect'}">
+                        ${isCorrect ? '✓ Correct!' : '✗ Incorrect!'} 
+                        ${!isCorrect ? `Correct answer: ${correctLetter}) ${correctAnswerText}` : ''}
+                        <br><br>Explanation: ${question.explanation}
+                    </div>
+                `;
+            }
+            
+            quizContainer.innerHTML = `
+                <div class="question">
+                    <div class="question-number">Question ${currentQuestion + 1}/${quizData.length}</div>
+                    <div class="question-text">${question.question}</div>
+                    <div class="options">${optionsHTML}</div>
+                    ${feedbackHTML}
+                </div>
+            `;
+            
+            // Add event listeners to options
+            const optionElements = quizContainer.querySelectorAll('.option');
+            optionElements.forEach(option => {
+                option.addEventListener('click', selectOption);
+            });
+            
+            // Update navigation buttons
+            prevBtn.disabled = currentQuestion === 0;
+            nextBtn.textContent = currentQuestion === quizData.length - 1 ? 'Finish Quiz' : 'Next';
+        }
+
+        // Select an option
+        function selectOption(e) {
+            if (userAnswers[currentQuestion] !== null) return; // Already answered
+            
+            const selectedOption = e.currentTarget;
+            const selectedIndex = parseInt(selectedOption.dataset.index);
+            
+            userAnswers[currentQuestion] = selectedIndex;
+            
+            // Check if answer is correct
+            if (selectedIndex === quizData[currentQuestion].answer) {
+                score++;
+                scoreEl.textContent = score;
+            } else {
+                // Add to incorrect questions list
+                incorrectQuestions.push({
+                    question: quizData[currentQuestion].question,
+                    userAnswer: selectedIndex,
+                    correctAnswer: quizData[currentQuestion].answer,
+                    options: quizData[currentQuestion].options,
+                    explanation: quizData[currentQuestion].explanation,
+                    questionNumber: currentQuestion + 1
+                });
+            }
+            
+            showQuestion();
+            updateProgressBar();
+        }
+
+        // Show next question
+        function showNextQuestion() {
+            if (currentQuestion < quizData.length - 1) {
+                currentQuestion++;
+                showQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        // Show previous question
+        function showPreviousQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                showQuestion();
+            }
+        }
+
+        // Update progress bar
+        function updateProgressBar() {
+            const progress = ((currentQuestion + 1) / quizData.length) * 100;
+            progressBar.style.width = `${progress}%`;
+        }
+
+        // Show results
+        function showResults() {
+            quizContainer.style.display = 'none';
+            document.querySelector('.navigation').style.display = 'none';
+            document.querySelector('.progress-container').style.display = 'none';
+            document.querySelector('.stats').style.display = 'none';
+            
+            finalScoreEl.textContent = score;
+            
+            // Performance message
+            const percentage = (score / quizData.length) * 100;
+            let message = '';
+            if (percentage >= 80) {
+                message = 'Excellent! You have a strong understanding of Skeletal Muscle Relaxants.';
+            } else if (percentage >= 60) {
+                message = 'Good job! You have a solid grasp of the material.';
+            } else if (percentage >= 40) {
+                message = 'Not bad! Review the material and try again.';
+            } else {
+                message = 'Keep studying! Review the lectures and try again.';
+            }
+            
+            performanceMessageEl.textContent = message;
+            resultsContainer.style.display = 'block';
+            
+            // Show review button only if there are incorrect answers
+            if (incorrectQuestions.length > 0) {
+                reviewBtn.style.display = 'inline-block';
+            } else {
+                reviewBtn.style.display = 'none';
+            }
+        }
+
+        // Show incorrect questions
+        function showIncorrectQuestions() {
+            resultsContainer.style.display = 'none';
+            reviewSection.style.display = 'block';
+            
+            let incorrectHTML = '';
+            incorrectQuestions.forEach((item, index) => {
+                const correctLetter = String.fromCharCode(65 + item.correctAnswer);
+                const userLetter = String.fromCharCode(65 + item.userAnswer);
+                
+                incorrectHTML += `
+                    <div class="review-question">
+                        <div class="review-question-number">Question ${item.questionNumber}</div>
+                        <div class="review-question-text">${item.question}</div>
+                        <div>Your answer: ${userLetter}) ${item.options[item.userAnswer]}</div>
+                        <div class="review-answer review-correct">Correct answer: ${correctLetter}) ${item.options[item.correctAnswer]}</div>
+                        <div class="review-explanation">${item.explanation}</div>
+                    </div>
+                `;
+            });
+            
+            incorrectQuestionsList.innerHTML = incorrectHTML;
+        }
+
+        // Restart quiz
+        function restartQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            userAnswers = new Array(quizData.length).fill(null);
+            incorrectQuestions = [];
+            
+            // Re-randomize the quiz data when restarting
+            quizData = createRandomizedQuizData();
+            
+            quizContainer.style.display = 'block';
+            document.querySelector('.navigation').style.display = 'flex';
+            document.querySelector('.progress-container').style.display = 'block';
+            document.querySelector('.stats').style.display = 'flex';
+            resultsContainer.style.display = 'none';
+            reviewSection.style.display = 'none';
+            
+            showQuestion();
+            updateProgressBar();
+        }
+
+        // Initialize the quiz when the page loads
+        window.onload = initQuiz;
+    </script>
+</body>
+</html>
